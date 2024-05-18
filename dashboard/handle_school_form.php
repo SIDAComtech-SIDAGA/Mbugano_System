@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Prepare SQL statement
             $sql = "INSERT INTO School_Info (School_Name, School_Address, Head_Master, Head_Master_Phone, About_School)
                     VALUES (:schoolName, :schoolAddress, :headMaster, :headMasterPhone, :aboutSchool)";
-            $stmt = $pdo->prepare($sql);
+            $stmt = $conn->prepare($sql);
 
             // Bind parameters
             $stmt->bindParam(':schoolName', $schoolName);
@@ -62,4 +62,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
-?>
