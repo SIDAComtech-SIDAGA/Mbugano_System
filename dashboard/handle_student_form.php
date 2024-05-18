@@ -20,7 +20,7 @@ $studentsEnrolled = $boys + $girls;
     // Insert or update the data into the SchoolGradeData table
     try {
         // Check if the data already exists for the given school and grade
-        $stmt = $pdo->prepare("SELECT * FROM SchoolGradeData WHERE SchoolID = :schoolID AND Grade = :grade");
+        $stmt = $conn->prepare("SELECT * FROM SchoolGradeData WHERE SchoolID = :schoolID AND Grade = :grade");
         $stmt->execute(['schoolID' => $schoolID, 'grade' => $grade]);
         $rowCount = $stmt->rowCount();
 
@@ -33,10 +33,11 @@ $studentsEnrolled = $boys + $girls;
         }
 
         // Prepare and execute the SQL statement
-        $stmt = $pdo->prepare($sql);
+        $stmt = $conn->prepare($sql);
         $stmt->execute(['schoolID' => $schoolID, 'grade' => $grade, 'boys' => $boys, 'girls' => $girls, 'studentsEnrolled' => $studentsEnrolled, 'classTeacher' => $classTeacher]);
 
-        echo "Data inserted/updated successfully";
+        header("Location: add-students.php?success=Data inserted successfully");
+            exit;
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

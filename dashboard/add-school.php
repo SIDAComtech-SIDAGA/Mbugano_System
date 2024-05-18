@@ -113,7 +113,7 @@
             <div class="create__course sp_100">
              <div class="container">
                 <div class="row">
-                    <div class="col-xl-8 col-lg-8 col-md-12 col-12">
+                    <div class="col-md-12 col-12">
                         <div class="create__course__accordion__wraper">
                         <div class="accordion" id="accordionExample">
 

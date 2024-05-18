@@ -7,9 +7,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
     require_once "../auth.php";
 
     // Fetch schools from the database
-    try {
+    try {   
         // Prepare SQL statement
-        $stmt = $pdo->prepare("SELECT School_id, School_Name FROM school_info");
+        $stmt = $conn->prepare("SELECT School_id, School_Name FROM school_info");
 
         // Execute the statement
         $stmt->execute();
@@ -50,6 +50,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
 
 
     </head>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                successMessage.style.display = 'block';
+
+                setTimeout(function() {
+                    successMessage.style.display = 'none';
+                }, 4000); // 4000 milliseconds = 4 seconds
+            }
+        });
+    </script>
 
     <body class="body__wrapper">
         <!-- pre loader area start -->
@@ -101,7 +113,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                     <div class="dashboardarea__left">
                                     <div class="dashboardarea__right">
                                         <div class="dashboardarea__right__button">
-                                            <a class="default__button" href="add-school.php">Add School info
+                                            <a class="default__button" href="add-school.php">Add School information
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
                                         </div>
                                     </div>
@@ -130,10 +142,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             </div>
 
             <!-- instructor__start -->
-            <div class="create__course sp_100">
+            <div class="add-data">
+            <div class="create__course sp_100" >
                 <div class="container">
                     <div class="row">
-                        <div class="col-xl-8 col-lg-8 col-md-12 col-12">
+                        
+                        <div class="col-md-12">
                             <div class="create__course__accordion__wraper">
                                 <div class="accordion" id="accordionExample">
 
@@ -143,6 +157,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                 Students Info
                                             </button>
+                                            <?php if (isset($_GET['success'])) { ?>
+                                    <div class="alert alert-success" id="successMessage" role="alert">
+                                        <?= htmlspecialchars($_GET['success']) ?>
+                                    </div>
+                                <?php } ?>
                                         </h2>
                                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <form action="handle_student_form.php" method="POST">
@@ -155,15 +174,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                                                 </div>
                                                                 <div class="dashboard__selector">
                                                                 <select class="form-select" name="school_id" aria-label="Default select example">
-        <option selected>Choose</option>
-        <?php if (!empty($schools)): ?>
-            <?php foreach ($schools as $school): ?>
-                <option value="<?= $school['School_id'] ?>"><?= $school['School_Name'] ?></option>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <option value="">No schools found</option>
-        <?php endif; ?>
-    </select>
+                                                                <option selected>Choose</option>
+                                                                <?php if (!empty($schools)): ?>
+                                                                    <?php foreach ($schools as $school): ?>
+                                                                        <option value="<?= $school['School_id'] ?>"><?= $school['School_Name'] ?></option>
+                                                                    <?php endforeach; ?>
+                                                                <?php else: ?>
+                                                                    <option value="">No schools found</option>
+                                                                <?php endif; ?>
+                                                            </select>
                                                                 </div>
                                                             </div>
 
@@ -229,7 +248,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                                             </div>
                                                             <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                                                                 <div class="dashboard__form__button create__course__margin">
-                                                                    <button type="submit">Submit</button>
+                                                                    <button class="btn btn-success" type="submit">Submit</button>
                                                                 </div>
                                                             </div>
 
@@ -264,6 +283,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            </div>
 
         </main>
 
