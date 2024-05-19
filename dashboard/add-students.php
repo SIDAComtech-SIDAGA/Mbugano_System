@@ -164,100 +164,99 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                 <?php } ?>
                                         </h2>
                                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <form action="handle_student_form.php" method="POST">
-                                                <div class="accordion-body">
-                                                    <div class="become__instructor__form">
-                                                        <div class="row">
-                                                            <div class="col-xl-6 col-lg-6 col-md-6 col-12">
-                                                                <div class="dashboard__select__heading">
-                                                                    <span>Schools</span>
-                                                                </div>
-                                                                <div class="dashboard__selector">
-                                                                <select class="form-select" name="school_id" aria-label="Default select example">
-                                                                <option selected>Choose</option>
-                                                                <?php if (!empty($schools)): ?>
-                                                                    <?php foreach ($schools as $school): ?>
-                                                                        <option value="<?= $school['School_id'] ?>"><?= $school['School_Name'] ?></option>
-                                                                    <?php endforeach; ?>
-                                                                <?php else: ?>
-                                                                    <option value="">No schools found</option>
-                                                                <?php endif; ?>
-                                                            </select>
-                                                                </div>
-                                                            </div>
+                                        <form action="handle_student_form.php" method="POST">
+    <div class="accordion-body">
+        <div class="become__instructor__form">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                    <div class="dashboard__select__heading">
+                        <span>Schools</span>
+                    </div>
+                    <div class="dashboard__selector">
+                        <select class="form-select" name="school_id" aria-label="Default select example">
+                            <option selected>Choose</option>
+                            <?php if (!empty($schools)): ?>
+                                <?php foreach ($schools as $school): ?>
+                                    <option value="<?= htmlspecialchars($school['School_id']) ?>"><?= htmlspecialchars($school['School_Name']) ?></option>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <option value="">No schools found</option>
+                            <?php endif; ?>
+                        </select>
+                    </div>
+                </div>
 
-                                                            <div class="col-xl-6 col-lg-6 col-md-6 col-12">
-                                                                <div class="dashboard__select__heading">
-                                                                    <span>Grade</span>
-                                                                </div>
-                                                                <div class="dashboard__selector">
-                                                                    <select class="form-select" name="grade" aria-label="Default select example">
-                                                                        <option selected>Choose</option>
-                                                                        <option value="1">Grade 0</option>
-                                                                        <option value="2">Grade 2</option>
-                                                                        <option value="3">Grade 3</option>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-12">
+                    <div class="dashboard__select__heading">
+                        <span>Grade</span>
+                    </div>
+                    <div class="dashboard__selector">
+                        <select class="form-select" name="grade" aria-label="Default select example">
+                            <option selected>Choose</option>
+                            <option value="0">Grade 0</option>
+                            <option value="1">Grade 1</option>
+                            <option value="2">Grade 2</option>
+                            <option value="3">Grade 3</option>
+                            <option value="4">Grade 4</option>
+                            <option value="5">Grade 5</option>
+                            <option value="6">Grade 6</option>
+                            <option value="7">Grade 7</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                    <div class="dashboard__form__wraper">
+                        <div class="dashboard__form__input">
+                            <label for="#">Total Boys</label>
+                            <input type="number" name="boys" placeholder="Boys" required>
+                        </div>
+                    </div>
+                </div>
 
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                                                                <div class="dashboard__form__wraper">
-                                                                    <div class="dashboard__form__input">
-                                                                        <label for="#">Total</label>
-                                                                        <input type="text" name="boys" placeholder="Boys">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                    <div class="dashboard__form__wraper">
+                        <div class="dashboard__form__input">
+                            <label for="#">Total Girls</label>
+                            <input type="number" name="girls" placeholder="Girls" required>
+                        </div>
+                    </div>
+                </div>
 
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                                                                <div class="dashboard__form__wraper">
-                                                                    <div class="dashboard__form__input">
-                                                                        <label for="#">Total</label>
-                                                                        <input type="text" name="girls" placeholder="Girls">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                    <div class="dashboard__form__wraper">
+                        <div class="dashboard__form__input">
+                            <label for="#">Class Teacher</label>
+                            <input type="text" name="class_teacher" placeholder="Class Teacher" required>
+                        </div>
+                        <small class="create__course__small">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg> (Mwalimu wa darasa)</small>
+                    </div>
+                </div>
 
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                                                                <div class="dashboard__form__wraper">
-                                                                    <div class="dashboard__form__input">
-                                                                        <label for="#">Class Teacher</label>
-                                                                        <input type="text" name="class_teacher" placeholder="Class Teacher">
-                                                                    </div>
-                                                                    <small class="create__course__small">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
-                                                                            <circle cx="12" cy="12" r="10"></circle>
-                                                                            <line x1="12" y1="16" x2="12" y2="12"></line>
-                                                                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                                                                        </svg> (Mwalimu wa darasa)</small>
-                                                                </div>
-                                                            </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                    <div class="dashboard__form__wraper">
+                        <div class="dashboard__form__input">
+                            <label for="#">About Class</label>
+                            <textarea name="about_class" placeholder="Optional" id="" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                    <div class="dashboard__form__button create__course__margin">
+                        <button class="btn btn-success" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
-
-
-
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                                                                <div class="dashboard__form__wraper">
-                                                                    <div class="dashboard__form__input">
-                                                                        <label for="#">About Class</label>
-                                                                        <textarea name="" placeholder="Optional" id="" cols="30" rows="10"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-12">
-                                                                <div class="dashboard__form__button create__course__margin">
-                                                                    <button class="btn btn-success" type="submit">Submit</button>
-                                                                </div>
-                                                            </div>
-
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
                                         </div>
                                     </div>
 

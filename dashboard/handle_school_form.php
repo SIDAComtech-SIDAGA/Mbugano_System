@@ -31,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors[] = "Head Master Phone is required";
     }
 
-    // If there are no errors, proceed to insert data into the database
     if (empty($errors)) {
         try {
             // Prepare SQL statement

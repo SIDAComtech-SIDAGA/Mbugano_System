@@ -1,45 +1,45 @@
 <?php
-// Include the database configuration file
-require_once "../auth.php";
+session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Include the database configuration file
-    require_once "../db_conn.php";
+if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
 
-    // Retrieve form data
-$schoolID = $_POST['school_id'];
-$grade = $_POST['grade'];
-$boys = isset($_POST['boys']) ? intval($_POST['boys']) : 0; // Convert to integer, default to 0 if not set
-$girls = isset($_POST['girls']) ? intval($_POST['girls']) : 0; // Convert to integer, default to 0 if not set
-$classTeacher = $_POST['class_teacher'];
+    require_once "../auth.php";
 
-// Calculate total students enrolled
-$studentsEnrolled = $boys + $girls;
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $school_id = $_POST['school_id'];
+        $grade = $_POST['grade'];
+        $boys = $_POST['boys'];
+        $girls = $_POST['girls'];
+        $class_teacher = $_POST['class_teacher'];
+        $about_class = $_POST['about_class'];
 
+        // Calculate the total students
+        $students_enrolled = $boys + $girls;
 
-    // Insert or update the data into the SchoolGradeData table
-    try {
-        // Check if the data already exists for the given school and grade
-        $stmt = $conn->prepare("SELECT * FROM SchoolGradeData WHERE SchoolID = :schoolID AND Grade = :grade");
-        $stmt->execute(['schoolID' => $schoolID, 'grade' => $grade]);
-        $rowCount = $stmt->rowCount();
+        try {
+            // Prepare the SQL query
+            $stmt = $conn->prepare("INSERT INTO schoolgradedata (SchoolID, Grade, Boys, Girls, StudentsEnrolled, class_teacher, about_class) VALUES (:school_id, :grade, :boys, :girls, :students_enrolled, :class_teacher, :about_class)");
 
-        if ($rowCount > 0) {
-            // Data exists, update the record
-            $sql = "UPDATE SchoolGradeData SET Boys = :boys, Girls = :girls, StudentsEnrolled = :studentsEnrolled, class_teacher = :classTeacher WHERE SchoolID = :schoolID AND Grade = :grade";
-        } else {
-            // Data doesn't exist, insert a new record
-            $sql = "INSERT INTO SchoolGradeData (SchoolID, Grade, Boys, Girls, StudentsEnrolled, class_teacher) VALUES (:schoolID, :grade, :boys, :girls, :studentsEnrolled, :classTeacher)";
+            // Bind the parameters
+            $stmt->bindParam(':school_id', $school_id);
+            $stmt->bindParam(':grade', $grade);
+            $stmt->bindParam(':boys', $boys);
+            $stmt->bindParam(':girls', $girls);
+            $stmt->bindParam(':students_enrolled', $students_enrolled);
+            $stmt->bindParam(':class_teacher', $class_teacher);
+            $stmt->bindParam(':about_class', $about_class);
+
+            // Execute the query
+            $stmt->execute();
+
+            // Redirect with a success message
+            header("Location: add-students.php?success=Data has been successfully added");
+            exit();
+
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
-
-        // Prepare and execute the SQL statement
-        $stmt = $conn->prepare($sql);
-        $stmt->execute(['schoolID' => $schoolID, 'grade' => $grade, 'boys' => $boys, 'girls' => $girls, 'studentsEnrolled' => $studentsEnrolled, 'classTeacher' => $classTeacher]);
-
-        header("Location: add-students.php?success=Data inserted successfully");
-            exit;
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
     }
+} else {
+    echo "You must be logged in to view this page.";
 }
-?>
