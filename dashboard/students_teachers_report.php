@@ -229,10 +229,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <tr>
             <th rowspan="3">No</th>
             <th rowspan="3">JINA LA SHULE</th>
-            <th colspan="3">AWALI</th>
-            <th colspan="3">DRS LA I</th>
-            <th colspan="3">DRS LA II</th>
-            <th colspan="3">DRS LA III</th>
+            <th colspan="3">Boys</th>
+            <th colspan="3">Girls</th>
+            <th colspan="3">BOOKS REQUIRED</th>
+            <th colspan="3">chairs required</th>
             <th colspan="3">DRS LA IV</th>
             <th colspan="3">DRS LA V</th>
             <th colspan="3">DRS LA VI</th>
