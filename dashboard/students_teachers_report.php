@@ -139,7 +139,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <!-- Dark/Light area end -->
 
         <main class="main_wrapper overflow-hidden">
-            <?php require_once("../include/top_bar.php"); ?>
+            <?php require_once("../include/top_bar.php"); 
+            ?>
 
 
 
@@ -224,59 +225,22 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                                     <div class="cartarea__table__content table-responsive">
 
                                                         <div class="table-responsive">
-                                                        <table class="table table-bordered bg-primary">
+                                                        <table border="1" id="ReportTable">
     <thead>
         <tr>
-            <th rowspan="3">No</th>
-            <th rowspan="3">JINA LA SHULE</th>
-            <th colspan="3">Boys</th>
-            <th colspan="3">Girls</th>
-            <th colspan="3">BOOKS REQUIRED</th>
-            <th colspan="3">chairs required</th>
-            <th colspan="3">DRS LA IV</th>
-            <th colspan="3">DRS LA V</th>
-            <th colspan="3">DRS LA VI</th>
-            <th colspan="3">DRS LA VII</th>
-            <th colspan="3">JUMLA KUU</th>
-        </tr>
-        <tr>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-        </tr>
-        <tr>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
+            <th>No</th>
+            <th>School Name</th>
+            <th>Total Boys</th>
+            <th>Total Girls</th>
+            <th>Total Students</th>
+            <th>Girls Toilets</th>
+            <th>Teacher Required</th>
+            <th>Teacher's Houses</th>
+            <th>Teacher's Tables</th>
+            <th>Teacher's Chairs</th>
+            <th>Student's Books</th>
+            <th>Student's Chairs</th>
+            <th>Teacher's Toilets</th>
         </tr>
     </thead>
     <tbody>
@@ -284,47 +248,37 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         if (!empty($schoolsData)) {
             $schoolIndex = 1;
             foreach ($schoolsData as $school) {
-                // Calculate the totals for JUMLA KUU
                 $totalBoys = 0;
                 $totalGirls = 0;
-                $totalStudents = 0;
 
                 for ($grade = 0; $grade <= 7; $grade++) {
                     if (isset($school['grades'][$grade])) {
                         $totalBoys += $school['grades'][$grade]['boys'];
                         $totalGirls += $school['grades'][$grade]['girls'];
-                        $totalStudents += $school['grades'][$grade]['students_enrolled'];
+                        $totalStudent = $totalBoys + $totalGirls;
+                        $toiletsRequired = ceil($totalStudent / 25);
+                        if($totalStudent < 25 && $totalStudent < 50){
+                            $toiletsRequired = 1;
+                        }
+
+                        
                     }
                 }
+                
 
                 echo "<tr>";
                 echo "<td>" . $schoolIndex . "</td>";
                 echo "<td>" . htmlspecialchars($school['school_name']) . "</td>";
-                
-                // Display grades from AWALI (0) to DRS LA VII (7)
-                for ($grade = 0; $grade <= 7; $grade++) {
-                    if (isset($school['grades'][$grade])) {
-                        $boys = $school['grades'][$grade]['boys'];
-                        $girls = $school['grades'][$grade]['girls'];
-                        $total = $school['grades'][$grade]['students_enrolled'];
-                    } else {
-                        $boys = $girls = $total = 0;
-                    }
-                    echo "<td>" . htmlspecialchars($boys) . "</td>";
-                    echo "<td>" . htmlspecialchars($girls) . "</td>";
-                    echo "<td>" . htmlspecialchars($total) . "</td>";
-                }
-
-                // Display totals for JUMLA KUU
                 echo "<td>" . htmlspecialchars($totalBoys) . "</td>";
                 echo "<td>" . htmlspecialchars($totalGirls) . "</td>";
-                echo "<td>" . htmlspecialchars($totalStudents) . "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($toiletsRequired). "</td>";
                 echo "</tr>";
 
                 $schoolIndex++;
             }
         } else {
-            echo "<tr><td colspan='29'>No data available</td></tr>";
+            echo "<tr><td colspan='4'>No data available</td></tr>";
         }
         ?>
     </tbody>
@@ -342,12 +296,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-4 col-md-6 col-12">
                                             <div class="create__course__bottom__button">
-                                                <a href="#">Preview</a>
+                                                <a href="#">Download</a>
                                             </div>
                                         </div>
                                         <div class="col-xl-8 col-lg-8 col-md-6 col-12">
                                             <div class="create__course__bottom__button">
-                                                <a href="#">Create Course</a>
+                                                <a href="#" >Create Course</a>
                                             </div>
                                         </div>
                                     </div>
