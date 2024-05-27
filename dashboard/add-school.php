@@ -71,7 +71,7 @@
         <!-- Dark/Light area end -->
 
     <main class="main_wrapper overflow-hidden">
-        <?php require_once("../include/top_bar.php");?>
+    
 
        
         <!-- breadcrumbarea__section__start -->

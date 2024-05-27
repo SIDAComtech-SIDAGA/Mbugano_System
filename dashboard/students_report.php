@@ -9,18 +9,18 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
     try {
         // Query to get information from school_info and the table with grade data
         $stmt = $conn->prepare("
-            SELECT 
-                si.School_id, 
-                si.School_Name, 
-                gd.Grade, 
-                gd.Boys, 
-                gd.Girls, 
-                gd.StudentsEnrolled 
-            FROM 
-                school_info si 
-            JOIN 
-                schoolgradedata gd 
-            ON 
+            SELECT
+                si.School_id,
+                si.School_Name,
+                gd.Grade,
+                gd.Boys,
+                gd.Girls,
+                gd.StudentsEnrolled
+            FROM
+                school_info si
+            JOIN
+                schoolgradedata gd
+            ON
                 si.School_id = gd.SchoolID
         ");
         $stmt->execute();
@@ -57,7 +57,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                 $schoolsData[$schoolID]['total_boys'] += $row['Boys'];
                 $schoolsData[$schoolID]['total_girls'] += $row['Girls'];
                 $schoolsData[$schoolID]['total_students'] += $row['StudentsEnrolled'];
-                
+
             }
         } else {
             $schoolsData = [];
@@ -139,7 +139,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <!-- Dark/Light area end -->
 
         <main class="main_wrapper overflow-hidden">
-            <?php require_once("../include/top_bar.php"); 
+            <?php require_once("../include/top_bar.php");
             ?>
 
 
@@ -179,7 +179,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                         </div>
                                     </div>
                                     <!-- <div class="dashboardarea__right">
-                                        
+
                                     </div> -->
                                     <div class="dashboardarea__right">
                                         <div class="dashboardarea__right__button">
@@ -203,12 +203,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                 <div class="create__course sp_100">
                     <div class="container">
                         <div class="row">
-
                             <div class="col-md-12">
                                 <div class="create__course__accordion__wraper">
                                     <div class="accordion" id="accordionExample">
-
-
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="headingOne">
                                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -223,7 +220,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                 <form action="#">
                                                     <div class="cartarea__table__content table-responsive">
-
                                                         <div class="table-responsive">
                                                         <table border="1" id="ReportTable">
     <thead>
@@ -256,15 +252,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                         $totalBoys += $school['grades'][$grade]['boys'];
                         $totalGirls += $school['grades'][$grade]['girls'];
                         $totalStudent = $totalBoys + $totalGirls;
-                        $toiletsRequired = ceil($totalStudent / 25);
-                        if($totalStudent < 25 && $totalStudent < 50){
-                            $toiletsRequired = 1;
-                        }
+                        $studentsToilets = ($totalStudent < 50)? 1:
+                        ceil($totalStudent / 25);
 
                         
+
+
                     }
                 }
-                
+
 
                 echo "<tr>";
                 echo "<td>" . $schoolIndex . "</td>";
@@ -272,7 +268,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                 echo "<td>" . htmlspecialchars($totalBoys) . "</td>";
                 echo "<td>" . htmlspecialchars($totalGirls) . "</td>";
                 echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($toiletsRequired). "</td>";
+                echo  "<td>" . htmlspecialchars($studentsToilets). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+
                 echo "</tr>";
 
                 $schoolIndex++;
@@ -306,19 +310,12 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                                         </div>
                                     </div>
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </main>
-
-
         <!-- JS here -->
         <script src="../js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="../js/vendor/jquery-3.6.0.min.js"></script>
@@ -337,9 +334,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <script src="../js/plugins.js"></script>
         <script src="../js/swiper-bundle.min.js"></script>
         <script src="../js/main.js"></script>
-
-
-
     </body>
 
     </html>

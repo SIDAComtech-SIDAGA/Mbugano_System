@@ -1,50 +1,4 @@
-<div class="topbararea">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="topbar__left">
-                            <ul>
-                                <li>
-                                    KILOLO IRINGA
-                                </li>
-                                <li>
-                                   KILOLO IRINGA
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="topbar__right">
-                            <div class="topbar__icon">
-                                <i class="icofont-location-pin"></i>
-                            </div>
-                            <div class="topbar__text">
-                                <p>Ruaha mbuyuni</p>
-                            </div>
-                            <div class="topbar__list">
-                                <ul>
-                                    <li>
-                                        <a href="#"><i class="icofont-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icofont-twitter"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icofont-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="icofont-youtube-play"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
-        <header>
+    <header>
             <div class="headerarea transparent__header header__sticky header__area">
                 <div class="container desktop__menu__wrapper">
                     <div class="row">
@@ -52,7 +6,7 @@
                             <div class="headerarea__left">
                                 <div class="headerarea__left__logo">
 
-                                    <a href="index.html"><img loading="lazy"  src="img/logo/logo_1.png" alt="logo"></a>
+                                    <a href="index.html"><img loading="lazy"  src="../" alt="logo"></a>
                                 </div>
 
                             </div>
@@ -73,7 +27,7 @@
                                                     </li>
                                                     <li class="nav-item" role="presentation">
                                                         <button class="single__tab__link" data-bs-toggle="tab" data-bs-target="#projects__dark" type="button">Dark</button>
-                                                    </li>                        
+                                                    </li>
                                                 </ul>
 
 
@@ -82,311 +36,311 @@
 
                                                         <div class="row">
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
-                                                                    <a href="index.html">
+                                                                    <a href="#">
                                                                         <img loading="lazy"  src="img/mega/home-1.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Default)</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-2.html">
                                                                         <img loading="lazy"  src="img/mega/home-2.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Elegant)</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-3.html">
                                                                         <img loading="lazy"  src="img/mega/home-3.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Classic)</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-4.html">
                                                                         <img loading="lazy"  src="img/mega/home-4.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Classic LMS)</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-5.html">
                                                                         <img loading="lazy"  src="img/mega/home-5.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Online Course)</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-6.html">
                                                                         <img loading="lazy"  src="img/mega/home-6.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Marketplace)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-7.html">
                                                                         <img loading="lazy"  src="img/mega/home-7.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (University)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-8.html">
                                                                         <img loading="lazy"  src="img/mega/home-8.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (eCommerce)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-9.html">
                                                                         <img loading="lazy"  src="img/mega/home-9.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Kindergarten)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-10.html">
                                                                         <img loading="lazy"  src="img/mega/home-10.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Machine Learning)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-        
-                                                            
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-11.html">
                                                                         <img loading="lazy"  src="img/mega/home-11.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Single Course)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="#">
                                                                         <img loading="lazy"  src="img/mega/coming.png" alt="Mega Menu 1">
                                                                         <span class="mega__menu__thumb__title">Layout Coming Soon 1</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-                                                            
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="#">
                                                                         <img loading="lazy"  src="img/mega/coming.png" alt="Mega Menu 2">
                                                                         <span class="mega__menu__thumb__title">Layout Coming Soon 2</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-                                                            
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="#">
                                                                         <img loading="lazy"  src="img/mega/coming.png" alt="Mega Menu 3">
                                                                         <span class="mega__menu__thumb__title">Layout Coming Soon 3</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-                                                            
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="#">
                                                                         <img loading="lazy"  src="img/mega/coming.png" alt="Mega Menu 4">
                                                                         <span class="mega__menu__thumb__title">Layout Coming Soon 4</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-        
+
                                                         </div>
 
                                                     </div>
-                                
+
                                                     <div class="tab-pane fade" id="projects__dark" role="tabpanel" aria-labelledby="projects__dark">
 
                                                         <div class="row">
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="index-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-1-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Default)</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-        
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-2-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-2-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Elegant)</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-        
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-3-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-3-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Classic)</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-4-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-4-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Classic LMS)</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-        
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-5-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-5-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Online Course)</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-        
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-6-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-6-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Marketplace)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-7-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-7-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (University)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-        
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-8-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-8-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (eCommerce)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-        
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-9-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-9-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Kindergarten)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-        
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-10-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-10-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Machine Learning)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-                                                            
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="home-11-dark.html">
                                                                         <img loading="lazy"  src="img/mega/home-11-dark.png" alt="Mega Menu">
                                                                         <span class="mega__menu__thumb__title">Home (Single Course)</span>
                                                                     </a>
                                                                     <span class="mega__menu__thumb__label">New</span>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="#">
                                                                         <img loading="lazy"  src="img/mega/coming-dark.png" alt="Mega Menu 1">
                                                                         <span class="mega__menu__thumb__title">Layout Coming Soon 1</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="#">
                                                                         <img loading="lazy"  src="img/mega/coming-dark.png" alt="Mega Menu 2">
                                                                         <span class="mega__menu__thumb__title">Layout Coming Soon 2</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="#">
                                                                         <img loading="lazy"  src="img/mega/coming-dark.png" alt="Mega Menu 3">
                                                                         <span class="mega__menu__thumb__title">Layout Coming Soon 3</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
 
-                                                            
-                                                            <div class="col-3 mega__menu__single__wrap">                                            
+
+                                                            <div class="col-3 mega__menu__single__wrap">
                                                                 <div class="mega__menu__thumb">
                                                                     <a href="#">
                                                                         <img loading="lazy"  src="img/mega/coming-dark.png" alt="Mega Menu 4">
                                                                         <span class="mega__menu__thumb__title">Layout Coming Soon 4</span>
                                                                     </a>
-                                                                </div>                                            
+                                                                </div>
                                                             </div>
-        
+
                                                         </div>
-                                
+
                                                     </div>
-                                
+
                                                 </div>
 
                                             </div>
@@ -433,7 +387,7 @@
                                                     </div>
                                                     <div class="col-3 mega__menu__single__wrap">
                                                         <h4 class="mega__menu__title"><a href="#">Get Started 4</a></h4>
-                                                        <ul class="mega__menu__item">                                                            
+                                                        <ul class="mega__menu__item">
                                                             <li><a href="#">Terms & Condition (Dark)</a></li>
                                                             <li><a href="#">Privacy Policy</a></li>
                                                             <li><a href="#">Privacy Policy (Dark)</a></li>
@@ -467,7 +421,7 @@
                                                             <li><a href="course-grid-dark.html">Course Grid (Dark)</a></li>
                                                             <li><a href="course-list.html">Course List</a></li>
                                                             <li><a href="course-list-dark.html">Course List (Dark)</a></li>
-                                                            
+
                                                         </ul>
                                                     </div>
                                                     <div class="col-3 mega__menu__single__wrap">
@@ -508,7 +462,7 @@
                                         </a>
                                         <ul class="headerarea__submenu headerarea__submenu--third--wrap">
                                             <li><a href="../admin-dashboard.html">Admin <i class="icofont-rounded-right"></i></a>
-                                    
+
                                                 <ul class="headerarea__submenu--third">
                                                     <li><a href="dashboard/admin-dashboard.html">Admin Dashboard</a></li>
                                                     <li><a href="dashboard/admin-profile.html">Admin Profile</a></li>
@@ -516,10 +470,10 @@
                                                     <li><a href="dashboard/admin-course.html">Courses</a></li>
                                                     <li><a href="dashboard/admin-reviews.html">Review</a></li>
                                                     <li><a href="dashboard/admin-quiz-attempts.html">Admin Quiz</a></li>
-                                                    
+
                                                     <li><a href="dashboard/admin-settings.html">Settings</a></li>
                                                 </ul>
-                                    
+
                                             </li>
                                             <li>
                                                 <a href="dashboard/instructor-dashboard.html">Instructor <i class="icofont-rounded-right"></i></a>
@@ -565,7 +519,7 @@
                                         <li><a href="ecommerce/wishlist.html">Wishlist</a></li>
                                     </ul>
                                 </li>
-                                        
+
 
                                     </ul>
                                 </nav>
@@ -665,68 +619,68 @@
                         </div>
                         <div class="col-6">
                             <div class="header-right-wrap">
-    
+
                                 <div class="headerarea__right">
-    
+
                                     <div class="header__cart">
                                         <a href="#"> <i class="icofont-cart-alt"></i></a>
                                         <div class="header__right__dropdown__wrapper">
                                             <div class="header__right__dropdown__inner">
                                                 <div class="single__header__right__dropdown">
-    
+
                                                     <div class="header__right__dropdown__img">
                                                         <a href="#">
                                                             <img loading="lazy"  src="img/grid/cart1.jpg" alt="photo">
                                                         </a>
                                                     </div>
                                                     <div class="header__right__dropdown__content">
-    
+
                                                         <a href="shop-product.html">Web Directory</a>
                                                         <p>1 x <span class="price">$ 80.00</span></p>
-    
+
                                                     </div>
                                                     <div class="header__right__dropdown__close">
                                                         <a href="#"><i class="icofont-close-line"></i></a>
                                                     </div>
                                                 </div>
-    
+
                                                 <div class="single__header__right__dropdown">
-    
+
                                                     <div class="header__right__dropdown__img">
                                                         <a href="#">
                                                             <img loading="lazy"  src="img/grid/cart2.jpg" alt="photo">
                                                         </a>
                                                     </div>
                                                     <div class="header__right__dropdown__content">
-    
+
                                                         <a href="shop-product.html">Design Minois</a>
                                                         <p>1 x <span class="price">$ 60.00</span></p>
-    
+
                                                     </div>
                                                     <div class="header__right__dropdown__close">
                                                         <a href="#"><i class="icofont-close-line"></i></a>
                                                     </div>
                                                 </div>
-    
+
                                                 <div class="single__header__right__dropdown">
-    
+
                                                     <div class="header__right__dropdown__img">
                                                         <a href="#">
                                                             <img loading="lazy"  src="img/grid/cart3.jpg" alt="photo">
                                                         </a>
                                                     </div>
                                                     <div class="header__right__dropdown__content">
-    
+
                                                         <a href="shop-product.html">Crash Course</a>
                                                         <p>1 x <span class="price">$ 70.00</span></p>
-    
+
                                                     </div>
                                                     <div class="header__right__dropdown__close">
                                                         <a href="#"><i class="icofont-close-line"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
-    
+
                                             <p class="dropdown__price">Total: <span>$1,100.00</span>
                                             </p>
                                             <div class="header__right__dropdown__button">
@@ -737,7 +691,7 @@
                                         </div>
                                     </div>
                                 </div>
-    
+
                                 <div class="mobile-off-canvas">
                                     <a class="mobile-aside-button" href="#"><i class="icofont-navigation-menu"></i></a>
                                 </div>
