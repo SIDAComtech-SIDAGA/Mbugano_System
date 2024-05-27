@@ -229,14 +229,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             <th>Total Boys</th>
             <th>Total Girls</th>
             <th>Total Students</th>
-            <th>Girls Toilets</th>
-            <th>Teacher Required</th>
-            <th>Teacher's Houses</th>
-            <th>Teacher's Tables</th>
-            <th>Teacher's Chairs</th>
-            <th>Student's Books</th>
-            <th>Student's Chairs</th>
-            <th>Teacher's Toilets</th>
+            <th>Toilers required</th>
         </tr>
     </thead>
     <tbody>
@@ -268,14 +261,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                 echo "<td>" . htmlspecialchars($totalBoys) . "</td>";
                 echo "<td>" . htmlspecialchars($totalGirls) . "</td>";
                 echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($studentsToilets). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                
 
                 echo "</tr>";
 

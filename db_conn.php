@@ -6,13 +6,12 @@ $db_name = "mbugano_db";
 
 
 try {
-  // Create a PDO connection
+  //  PDO connection
   $conn = new PDO("mysql:host=$sName;dbname=$db_name", $uName, $pass);
 
   // Set PDO attributes
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  // Connection successful
   // header("Location: ./dashboard/instructor-dashboard.php");
   // echo "Connected to the database successfully";
 } catch(PDOException $e) {
