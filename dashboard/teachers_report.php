@@ -5,6 +5,7 @@ session_start();
 if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
 
     require_once "../auth.php";
+    require_once"../include/variables.php";
 
     try {
         // Query to get information from school_info and the table with grade data
@@ -229,7 +230,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             <th>Total Boys</th>
             <th>Total Girls</th>
             <th>Total Students</th>
-            <th>Toilers required</th>
+            <th>Girls Toilets</th>
+            <th>Teacher Required</th>
+            <th>Teacher's Houses</th>
+            <th>Teacher's Tables</th>
+            <th>Teacher's Chairs</th>
+            <th>Student's Books</th>
+            <th>Student's Chairs</th>
+            <th>Teacher's Toilets</th>
         </tr>
     </thead>
     <tbody>
@@ -261,7 +269,14 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                 echo "<td>" . htmlspecialchars($totalBoys) . "</td>";
                 echo "<td>" . htmlspecialchars($totalGirls) . "</td>";
                 echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                
+                echo  "<td>" . htmlspecialchars($studentsToilets). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
+                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
 
                 echo "</tr>";
 
@@ -302,6 +317,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                 </div>
             </div>
         </main>
+        <!-- footer  -->
+
+        <?php require_once '../include/footer.php' ?>
         <!-- JS here -->
         <script src="../js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="../js/vendor/jquery-3.6.0.min.js"></script>

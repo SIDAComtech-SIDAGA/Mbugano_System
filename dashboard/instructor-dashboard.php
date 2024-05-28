@@ -1,15 +1,80 @@
 <?php 
   session_start();
+  require_once("../auth.php");
   require_once("../include/session-management.php");
+  require_once("../include/variables.php");
 
   if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) { 
+    try {
+        // Query to get information from school_info and the table with grade data
+        $stmt = $conn->prepare("
+            SELECT
+                si.School_id,
+                si.School_Name,
+                gd.Grade,
+                gd.Boys,
+                gd.Girls,
+                gd.StudentsEnrolled
+            FROM
+                school_info si
+            JOIN
+                schoolgradedata gd
+            ON
+                si.School_id = gd.SchoolID
+        ");
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Debug: Print the fetched data to verify the structure
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
+
+        // Check if data is not empty
+        if (!empty($data)) {
+            // Prepare an array to hold the totals
+            $schoolsData = [];
+            foreach ($data as $row) {
+                $schoolID = $row['School_id'];
+                $schoolName = $row['School_Name'];
+                $grade = $row['Grade'];
+
+                if (!isset($schoolsData[$schoolID])) {
+                    $schoolsData[$schoolID] = [
+                        'school_name' => $schoolName,
+                        'grades' => [],
+                        'total_boys' => 0,
+                        'total_girls' => 0,
+                        'total_students' => 0
+                    ];
+                }
+                $schoolsData[$schoolID]['grades'][$grade] = [
+                    'boys' => $row['Boys'],
+                    'girls' => $row['Girls'],
+                    'students_enrolled' => $row['StudentsEnrolled']
+                ];
+                $schoolsData[$schoolID]['total_boys'] += $row['Boys'];
+                $schoolsData[$schoolID]['total_girls'] += $row['Girls'];
+                $schoolsData[$schoolID]['total_students'] += $row['StudentsEnrolled'];
+
+            }
+        } else {
+            $schoolsData = [];
+        }
+
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        $schoolsData = [];
+    }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <?php echo $title ?>
 </head>
 <!-- CSS here -->
 <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -32,20 +97,8 @@
     </div>
     <!-- pre loader area end -->
     
-        <!-- Dark/Light area start -->
-        <div class="mode_switcher my_switcher">
-            <button id="light--to-dark-button" class="light align-items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon dark__mode" viewBox="0 0 512 512"><path d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
-    
-                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon light__mode" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M256 48v48M256 416v48M403.08 108.92l-33.94 33.94M142.86 369.14l-33.94 33.94M464 256h-48M96 256H48M403.08 403.08l-33.94-33.94M142.86 142.86l-33.94-33.94"/><circle cx="256" cy="256" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/></svg>
-    
-                <span class="light__mode">Light</span>
-                <span class="dark__mode">Dark</span>
-            </button>
-        </div>
-        <!-- Dark/Light area end -->
+   
 
-    <main class="main_wrapper overflow-hidden">
 
 
         <!-- topbar__section__stert -->
@@ -98,11 +151,12 @@
 
         <!-- headar section start -->
         <header>
+            <?php include_once '../include/top_bar.php' ?>
             <div class="headerarea headerarea__3 header__sticky header__area">
                 <div class="container desktop__menu__wrapper">
                     <div class="row">
                     <marquee behavior="scroll" direction="left"> <strong><h3 class="btn btn-danger">STUDENT DATA MANAGEMENT SYSTEM UNDER MAINTENANCE</h3></strong>
-</marquee>
+                        </marquee>
                         <div class="col-xl-2 col-lg-2 col-md-6">
                             <div class="headerarea__left">
                                 <div class="headerarea__left__logo">
@@ -152,32 +206,7 @@
                     <div class="col-xl-12">
                         <div class="dashboardarea__wraper">
                             <div class="dashboardarea__img">
-                                <div class="dashboardarea__inner">
-                                    <div class="dashboardarea__left">
-                                    <div class="dashboardarea__right">
-                                        <div class="dashboardarea__right__button">
-                                            <a class="default__button" href="add-students.php">Add Students Data
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="dashboardarea__right">
-                                        <div class="dashboardarea__right__button">
-                                            <a class="default__button" href="add-school.php">Add School Info
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="dashboardarea__right">
-                                        
-                                    </div> -->
-                                    <div class="dashboardarea__right">
-                                        <div class="dashboardarea__right__button">
-                                            <a class="default__button" href="students.php">Students Data
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-                                        </div>
-                                    </div>
-
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -375,8 +404,9 @@
             </div>
         </div>
          <!-- dashboardarea__area__end   -->
+  
 
-    </main>
+  <?php require_once '../include/footer.php' ?>
 
 
     <!-- JS here -->
@@ -396,7 +426,6 @@
     <script src="../js/jquery.counterup.min.js"></script>
     <script src="../js/plugins.js"></script>
     <script src="../js/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <script src="../js/main.js"></script>
     
     </body>

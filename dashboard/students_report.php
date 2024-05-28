@@ -5,6 +5,7 @@ session_start();
 if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
 
     require_once "../auth.php";
+    require_once"../include/variables.php";
 
     try {
         // Query to get information from school_info and the table with grade data
@@ -27,9 +28,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Debug: Print the fetched data to verify the structure
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
 
         // Check if data is not empty
         if (!empty($data)) {
@@ -316,6 +317,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                 </div>
             </div>
         </main>
+        <!-- footer  -->
+
+        <?php require_once '../include/footer.php' ?>
         <!-- JS here -->
         <script src="../js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="../js/vendor/jquery-3.6.0.min.js"></script>
