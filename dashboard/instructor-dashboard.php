@@ -21,8 +21,7 @@
                 schoolgradedata gd
             ON
                 si.School_id = gd.SchoolID
-        ");
-        $stmt->execute();
+        ");      $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Debug: Print the fetched data to verify the structure
@@ -285,6 +284,29 @@
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-12">
+                                                        <?php
+                                                        if (!empty($schoolsData)) {
+                                            $schoolIndex = 1;
+                                            foreach ($schoolsData as $school) {
+                                                $totalBoys = 0;
+                                                $totalGirls = 0;
+
+                                                for ($grade = 0; $grade <= 7; $grade++) {
+                                                    if (isset($school['grades'][$grade])) {
+                                                        $totalBoys += $school['grades'][$grade]['boys'];
+                                                        $totalGirls += $school['grades'][$grade]['girls'];
+                                                        $totalStudent = $totalBoys + $totalGirls;
+                                                        $studentsToilets = ($totalStudent < 50)? 1:
+                                                        ceil($totalStudent / 25);
+                                                     }
+                                                }
+                                            }
+                                        } else{
+                                            echo "No Data";
+                                        }
+                                    
+                                        ?>
+                        
                             <div class="dashboard__content__wraper">
                                 <div class="dashboard__section__title">
                                     <h4>Dashboard</h4>
@@ -294,14 +316,16 @@
                                         <div class="dashboard__single__counter">
                                             <div class="counterarea__text__wraper">
                                                 <div class="counter__img">
-                                                    <img loading="lazy"  src="../img/counter/counter__1.png" alt="counter">
+
+                                                <i class="icofont Home"></i>
+                                                    <!-- <img loading="lazy"  src="../img/counter/counter__1.png" alt="counter"> -->
                                                 </div>
                                                 <div class="counter__content__wraper">
                                                     <div class="counter__number">
-                                                        <span class="counter">27</span>+
+                                                        <!-- <span class="counter">27</span> -->
                     
                                                     </div>
-                                                    <p>Total Schools </p>
+                                                    <p><?php echo $schoolName ?> </p>
                 
                                                 </div>
                                             </div>
