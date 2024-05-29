@@ -5,7 +5,7 @@
                             <div class="headerarea__left">
                                 <div class="headerarea__left__logo">
 
-                            <strong><?php echo $logo ?>  </strong>                                  
+                            logo                            
                                 </div>
 
                             </div>
@@ -21,21 +21,27 @@
                                             
 
                                         </li>
-                                        
+                                            
 
                                         <li class="mega__menu position-static">
-                                            <a class="headerarea__has__dropdown" href="#">Home |Dashboard</a>
+                                            <a class="headerarea__has__dropdown" href="#">Add School</a>
                                            
                                         </li>
                                         <li class="mega__menu position-static">
-                                            <a class="headerarea__has__dropdown" href="#award">Schools
+                                            <a class="headerarea__has__dropdown" href="#award">Add Students
+                                                <!-- <i class="icofont-award"></i> -->
+                                        </a>
+                                           
+                                        </li>
+                                        <li class="mega__menu position-static">
+                                            <a class="headerarea__has__dropdown" href="#award">Students & Teacher Report
                                                 <!-- <i class="icofont-award"></i> -->
                                         </a>
                                            
                                         </li>
                                        
                                         <li class="mega__menu position-static">
-                                            <a class="headerarea__has__dropdown" href="https://eastc.ac.tz/index.php?r=site%2Fcontact">Report</a>
+                                            <a class="headerarea__has__dropdown" href="#">All Report</a>
                                           
 
                                         </li>
