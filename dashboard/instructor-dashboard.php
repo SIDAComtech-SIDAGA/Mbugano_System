@@ -6,7 +6,7 @@
 
   if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) { 
     try {
-        // Query to get information from school_info and the table with grade data
+        // Query 
         $stmt = $conn->prepare("
             SELECT
                 si.School_id,
@@ -25,9 +25,9 @@
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Debug: Print the fetched data to verify the structure
-        echo "<pre>";
-        print_r($data);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
 
         // Check if data is not empty
         if (!empty($data)) {

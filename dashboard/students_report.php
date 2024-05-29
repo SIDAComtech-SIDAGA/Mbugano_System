@@ -28,9 +28,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Debug: Print the fetched data to verify the structure
-        // echo "<pre>";
-        // print_r($data);
-        // echo "</pre>";
+        echo "<pre>";
+        print_r($data);
+        echo "</pre>";
 
         // Check if data is not empty
         if (!empty($data)) {
