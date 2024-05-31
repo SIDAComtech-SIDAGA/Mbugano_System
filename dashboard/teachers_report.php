@@ -153,51 +153,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                 </ol>
             </nav>
             <!-- end  -->
-            <div class="container-fluid full__width__padding">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="dashboardarea__wraper">
-                            <div class="dashboardarea__img">
-                                <div class="dashboardarea__inner">
-                                    <div class="dashboardarea__left">
-                                        <div class="dashboardarea__right">
-                                            <div class="dashboardarea__right__button">
-                                                <a class="default__button" href="add-school.php">Add School information
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
-                                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                        <polyline points="12 5 19 12 12 19"></polyline>
-                                                    </svg></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="dashboardarea__right">
-                                        <div class="dashboardarea__right__button">
-                                            <a class="default__button" href="add-students.php">Add Students Data
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
-                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                                </svg></a>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="dashboardarea__right">
-
-                                    </div> -->
-                                    <div class="dashboardarea__right">
-                                        <div class="dashboardarea__right__button">
-                                            <a class="default__button" href="report.php">See report
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
-                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                                </svg></a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php require_once '../include/report_navigator.php'?>
 
             <!-- instructor__start -->
             <div class="add-data">
@@ -231,61 +187,70 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             <th>Total Girls</th>
             <th>Total Students</th>
             <th>Girls Toilets</th>
-            <th>Teacher Required</th>
-            <th>Teacher's Houses</th>
-            <th>Teacher's Tables</th>
-            <th>Teacher's Chairs</th>
-            <th>Student's Books</th>
-            <th>Student's Chairs</th>
-            <th>Teacher's Toilets</th>
+            <th>Boys Toilets</th>
+            <th>Students Desk</th>
+            <th>Closets</th>
+            
         </tr>
     </thead>
     <tbody>
-        <?php
-        if (!empty($schoolsData)) {
-            $schoolIndex = 1;
-            foreach ($schoolsData as $school) {
-                $totalBoys = 0;
-                $totalGirls = 0;
+    <?php
+if (!empty($schoolsData)) {
+    $schoolIndex = 1;
+    foreach ($schoolsData as $school) {
+        $totalBoys = 0;
+        $totalGirls = 0;
+        $totalStudents = 0;
+        $girlsToilets = 0;
+        $boysToilets = 0;
 
-                for ($grade = 0; $grade <= 7; $grade++) {
-                    if (isset($school['grades'][$grade])) {
-                        $totalBoys += $school['grades'][$grade]['boys'];
-                        $totalGirls += $school['grades'][$grade]['girls'];
-                        $totalStudent = $totalBoys + $totalGirls;
-                        $studentsToilets = ($totalStudent < 50)? 1:
-                        ceil($totalStudent / 25);
-
-                        
-
-
-                    }
-                }
-
-
-                echo "<tr>";
-                echo "<td>" . $schoolIndex . "</td>";
-                echo "<td>" . htmlspecialchars($school['school_name']) . "</td>";
-                echo "<td>" . htmlspecialchars($totalBoys) . "</td>";
-                echo "<td>" . htmlspecialchars($totalGirls) . "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($studentsToilets). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-                echo  "<td>" . htmlspecialchars($totalStudent). "</td>";
-
-                echo "</tr>";
-
-                $schoolIndex++;
+        // Calculate total boys, girls, and students
+        for ($grade = 0; $grade <= 7; $grade++) {
+            if (isset($school['grades'][$grade])) {
+                $totalBoys += $school['grades'][$grade]['boys'];
+                $totalGirls += $school['grades'][$grade]['girls'];
+                
             }
-        } else {
-            echo "<tr><td colspan='4'>No data available</td></tr>";
         }
-        ?>
+
+        $totalStudents = $totalBoys + $totalGirls;
+
+        // Calculate girls' toilets
+        if ($totalGirls > 0) {
+            $girlsToilets = ceil($totalGirls / 25) -1;
+        }
+
+        // Calculate boys' toilets
+        if ($totalBoys > 0) {
+            $boysToilets = ceil($totalBoys / 20) -1;
+        }
+        if ($totalStudents > 0){
+            $deskRequired = ceil($totalStudents / 2 );
+        }
+        if ($totalBoys > 0 || $totalGirls > 0) {
+            $closets = 1;
+        }
+
+        echo "<tr>";
+        echo "<td>" . $schoolIndex . "</td>";
+        echo "<td>" . htmlspecialchars($school['school_name']) . "</td>";
+        echo "<td>" . htmlspecialchars($totalBoys) . "</td>";
+        echo "<td>" . htmlspecialchars($totalGirls) . "</td>";
+        echo "<td>" . htmlspecialchars($totalStudents) . "</td>";
+        echo "<td>" . htmlspecialchars($girlsToilets) . "</td>";
+        echo "<td>" . htmlspecialchars($boysToilets) . "</td>";
+        echo "<td>". htmlspecialchars($deskRequired). "</td>";
+        echo "<td>". htmlspecialchars($closets). "</td>";
+        // Add other columns as needed
+        echo "</tr>";
+
+        $schoolIndex++;
+    }
+} else {
+    echo "<tr><td colspan='4'>No data available</td></tr>";
+}
+?>
+
     </tbody>
 </table>
 
