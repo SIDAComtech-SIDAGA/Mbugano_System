@@ -5,7 +5,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
 
     require_once "../auth.php";
 
-    // Initialize the $schoolData variable
     $schoolData = [];
 
     try {
@@ -54,8 +53,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
-        <!-- Place favicon.ico in the root directory -->
+        <link rel="shortcut icon" type="image/x-icon" href="../img/school_icon.png">
+
 
         <!-- CSS here -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -79,7 +78,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
 
                 setTimeout(function() {
                     successMessage.style.display = 'none';
-                }, 4000); // 4000 milliseconds = 4 seconds
+                }, 4000); // 400 milliseconds = 4 seconds
             }
         });
     </script>

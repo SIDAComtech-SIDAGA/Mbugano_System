@@ -1,0 +1,13 @@
+{
+    "name": "sidaga/r_s",
+    "description": "This is my project to manage students Data",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SIDAGA WAZIRI KIHONGO"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

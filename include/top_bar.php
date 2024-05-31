@@ -22,7 +22,7 @@
                                 <a class="headerarea__has__dropdown" href="../dashboard/add-students.php">Add|Students</a>
                             </li>
                             <li class="mega__menu position-static">
-                                <a class="headerarea__has__dropdown" href="../dashboard/requirements.php">Classes</a>
+                                <a class="headerarea__has__dropdown" href="../dashboard/requirements-report.php">Classes</a>
                             </li>
                             <li class="mega__menu position-static">
                                 <a class="headerarea__has__dropdown" href="../dashboard/students.php">Students|Teacher Report</a>

@@ -80,8 +80,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
-        <!-- Place favicon.ico in the root directory -->
+        <link rel="shortcut icon" type="image/x-icon" href="../img/school_icon.png">
+
 
         <!-- CSS here -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -132,7 +132,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                    <li class="breadcrumb-item active" aria-current="page">Requirements</li>
                 </ol>
             </nav>
             <!-- end  -->
@@ -305,7 +305,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             
         </main>
 
-        
+       
+        <?php require_once '../include/footer.php' ?>
         <!-- JS here -->
         <script src="../js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="../js/vendor/jquery-3.6.0.min.js"></script>
@@ -324,9 +325,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <script src="../js/plugins.js"></script>
         <script src="../js/swiper-bundle.min.js"></script>
         <script src="../js/main.js"></script>
-
-
-
     </body>
 
     </html>

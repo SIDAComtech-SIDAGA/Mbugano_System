@@ -9,9 +9,12 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['user_email'])) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
+
         <title>SDMS</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="../img/school_icon.png">
+
 
 
         <?php require_once("./include/css.php"); ?>
@@ -19,42 +22,64 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['user_email'])) {
     </head>
 
 
-    <body class="body__wrapper"  style="background-image:url(ee.png); background-size:cover;">
+    <body class="body__wrapper"  style="background-image:url(img/middle-school.webp); background-size:cover;">
         <!-- pre loader area start -->
         <div id="back__preloader">
             <div id="back__circle_loader"></div>
             <div class="back__loader_logo">
-                <img loading="lazy" src="img/" alt="Preload">
+                <img loading="lazy" src="img/school_icon.png" style="background-size: size;" alt="Preload">
             </div>
-        </div>\
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        </div>       
         </div>
-        <!-- pre loader area end -->
-<div>
-    <br><br><br>
-</div>
+        <div class="topbararea">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="topbar__left">
+                            <ul>
+                                <li>
+                                    KILOLO IRINGA
+                                </li>
+                                <li>
+                                   KILOLO IRINGA
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="topbar__right">
+                            <div class="topbar__icon">
+                                <i class="icofont-location-pin"></i>
+                            </div>
+                            <div class="topbar__text">
+                                <p>Ruaha mbuyuni</p>
+                            </div>
+                            <div class="topbar__list">
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="icofont-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icofont-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icofont-instagram"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icofont-youtube-play"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <br>
+        </div>
+        
+
 
         <main class="main_wrapper overflow-hidden">
             <div class="tab-content tab__content__wrapper" id="myTabContent" data-aos="fade-up" style="width:80%; margin: 0 auto; ">
@@ -63,7 +88,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['user_email'])) {
                     <div class="col-xl-8 col-md-8 offset-md-2">
                         <div class="loginarea__wraper" style="background-color:aliceblue;">
                             <div class="login__heading">
-                                <h5 class="login__title" ><b>common__login__input</b></h5>
+                                <h5 class="login__title" ><b>Authenication</b></h5>
                                 <?php if (isset($_GET['error'])) { ?>
                                     <div class="alert alert-danger" role="alert">
                                         <?= htmlspecialchars($_GET['error']) ?>

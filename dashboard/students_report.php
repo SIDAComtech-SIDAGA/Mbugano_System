@@ -81,8 +81,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.ico">
-        <!-- Place favicon.ico in the root directory -->
+        <link rel="shortcut icon" type="image/x-icon" href="../img/school_icon.png">
+
 
         <!-- CSS here -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -149,7 +149,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                    <li class="breadcrumb-item active" aria-current="page">Students</li>
                 </ol>
             </nav>
             <!-- end  -->
@@ -190,6 +190,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             <th>Boys Toilets</th>
             <th>Students Desk</th>
             <th>Closets</th>
+            <th>Classes Needed</th>
             
         </tr>
     </thead>
@@ -215,20 +216,23 @@ if (!empty($schoolsData)) {
 
         $totalStudents = $totalBoys + $totalGirls;
 
-        // Calculate girls' toilets
+        
         if ($totalGirls > 0) {
             $girlsToilets = ceil($totalGirls / 25) -1;
         }
 
-        // Calculate boys' toilets
+        
         if ($totalBoys > 0) {
-            $boysToilets = ceil($totalBoys / 20) -1;
+            $boysToilets = ceil($totalBoys / 20);
         }
         if ($totalStudents > 0){
             $deskRequired = ceil($totalStudents / 2 );
         }
         if ($totalBoys > 0 || $totalGirls > 0) {
             $closets = 1;
+        }
+        if($totalStudents > 0){
+            $classesNeeded = ceil($totalStudents / 45) -1;
         }
 
         echo "<tr>";
@@ -241,7 +245,8 @@ if (!empty($schoolsData)) {
         echo "<td>" . htmlspecialchars($boysToilets) . "</td>";
         echo "<td>". htmlspecialchars($deskRequired). "</td>";
         echo "<td>". htmlspecialchars($closets). "</td>";
-        // Add other columns as needed
+        echo "<td>". htmlspecialchars($classesNeeded). "</td>";
+    
         echo "</tr>";
 
         $schoolIndex++;
@@ -271,7 +276,7 @@ if (!empty($schoolsData)) {
                                         </div>
                                         <div class="col-xl-8 col-lg-8 col-md-6 col-12">
                                             <div class="create__course__bottom__button">
-                                                <a href="#" >Create Course</a>
+                                                <a href="#" >Edit</a>
                                             </div>
                                         </div>
                                     </div>

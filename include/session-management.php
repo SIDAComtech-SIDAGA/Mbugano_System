@@ -1,7 +1,7 @@
 <?php
 
 
-$time_duration = 30000;
+$time_duration = 300;
 
 if(isset($_SESSION['last_activity'])){
     // calculate the session lifetime 
@@ -14,7 +14,7 @@ if(isset($_SESSION['last_activity'])){
         alert ('Session Destroyed');
         </script>";
         
-        // header('Location: ../login.php');
+        header('Location: ../login.php');
         exit();
     }
 
