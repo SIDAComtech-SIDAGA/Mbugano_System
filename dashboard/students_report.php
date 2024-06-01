@@ -93,10 +93,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <link rel="stylesheet" href="../css/slick.css">
         <link rel="stylesheet" href="../css/swiper-bundle.min.css">
         <link rel="stylesheet" href="../css/style.css">
-
-
-
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     </head>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -137,148 +134,135 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
                 <span class="dark__mode">Dark</span>
             </button>
         </div>
-        <!-- Dark/Light area end -->
-
         <main class="main_wrapper overflow-hidden">
-            <?php require_once("../include/top_bar.php");
-            ?>
+    <?php require_once("../include/top_bar.php"); ?>
 
+    <!-- breadcrumbarea__section__start -->
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Students</li>
+        </ol>
+    </nav>
+    <!-- end  -->
+    <?php require_once '../include/report_navigator.php' ?>
 
-
-            <!-- breadcrumbarea__section__start -->
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Students</li>
-                </ol>
-            </nav>
-            <!-- end  -->
-            <?php require_once '../include/report_navigator.php'?>
-
-            <!-- instructor__start -->
-            <div class="add-data">
-                <div class="create__course sp_100">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="create__course__accordion__wraper">
-                                    <div class="accordion" id="accordionExample">
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingOne">
-                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                    School Overview Report
-                                                </button>
-                                                <?php if (isset($_GET['success'])) { ?>
-                                                    <div class="alert alert-success" id="successMessage" role="alert">
-                                                        <?= htmlspecialchars($_GET['success']) ?>
-                                                    </div>
-                                                <?php } ?>
-                                            </h2>
-                                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                <form action="#">
-                                                    <div class="cartarea__table__content table-responsive">
-                                                        <div class="table-responsive">
-                                                        <table border="1" id="ReportTable">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>School Name</th>
-            <th>Total Boys</th>
-            <th>Total Girls</th>
-            <th>Total Students</th>
-            <th>Girls Toilets</th>
-            <th>Boys Toilets</th>
-            <th>Students Desk</th>
-            <th>Closets</th>
-            <th>Classes Needed</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-if (!empty($schoolsData)) {
-    $schoolIndex = 1;
-    foreach ($schoolsData as $school) {
-        $totalBoys = 0;
-        $totalGirls = 0;
-        $totalStudents = 0;
-        $girlsToilets = 0;
-        $boysToilets = 0;
-
-        // Calculate total boys, girls, and students
-        for ($grade = 0; $grade <= 7; $grade++) {
-            if (isset($school['grades'][$grade])) {
-                $totalBoys += $school['grades'][$grade]['boys'];
-                $totalGirls += $school['grades'][$grade]['girls'];
-                
-            }
-        }
-
-        $totalStudents = $totalBoys + $totalGirls;
-
-        
-        if ($totalGirls > 0) {
-            $girlsToilets = ceil($totalGirls / 25) -1;
-        }
-
-        
-        if ($totalBoys > 0) {
-            $boysToilets = ceil($totalBoys / 20);
-        }
-        if ($totalStudents > 0){
-            $deskRequired = ceil($totalStudents / 2 );
-        }
-        if ($totalBoys > 0 || $totalGirls > 0) {
-            $closets = 1;
-        }
-        if($totalStudents > 0){
-            $classesNeeded = ceil($totalStudents / 45) -1;
-        }
-
-        echo "<tr>";
-        echo "<td>" . $schoolIndex . "</td>";
-        echo "<td>" . htmlspecialchars($school['school_name']) . "</td>";
-        echo "<td>" . htmlspecialchars($totalBoys) . "</td>";
-        echo "<td>" . htmlspecialchars($totalGirls) . "</td>";
-        echo "<td>" . htmlspecialchars($totalStudents) . "</td>";
-        echo "<td>" . htmlspecialchars($girlsToilets) . "</td>";
-        echo "<td>" . htmlspecialchars($boysToilets) . "</td>";
-        echo "<td>". htmlspecialchars($deskRequired). "</td>";
-        echo "<td>". htmlspecialchars($closets). "</td>";
-        echo "<td>". htmlspecialchars($classesNeeded). "</td>";
-    
-        echo "</tr>";
-
-        $schoolIndex++;
-    }
-} else {
-    echo "<tr><td colspan='4'>No data available</td></tr>";
-}
-?>
-
-    </tbody>
-</table>
-
-                                                        </div>
-                                                    </div>
-                                                </form>
+    <!-- instructor__start -->
+    <div class="add-data">
+        <div class="create__course sp_100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="create__course__accordion__wraper">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            School Overview Report
+                                        </button>
+                                        <?php if (isset($_GET['success'])) { ?>
+                                            <div class="alert alert-success" id="successMessage" role="alert">
+                                                <?= htmlspecialchars($_GET['success']) ?>
                                             </div>
-                                        </div>
+                                        <?php } ?>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <form action="#">
+                                            <div class="cartarea__table__content table-responsive">
+                                                <div class="table-responsive">
+                                                    <table border="1" id="ReportTable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>No</th>
+                                                                <th>School Name</th>
+                                                                <th>Total Boys</th>
+                                                                <th>Total Girls</th>
+                                                                <th>Total Students</th>
+                                                                <th>Girls Toilets</th>
+                                                                <th>Boys Toilets</th>
+                                                                <th>Students Desk</th>
+                                                                <th>Closets</th>
+                                                                <th>Classes Needed</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <?php
+                                                        if (!empty($schoolsData)) {
+                                                            $schoolIndex = 1;
+                                                            foreach ($schoolsData as $school) {
+                                                                $totalBoys = 0;
+                                                                $totalGirls = 0;
+                                                                $totalStudents = 0;
+                                                                $girlsToilets = 0;
+                                                                $boysToilets = 0;
+
+                                                                // Calculate total boys, girls, and students
+                                                                for ($grade = 0; $grade <= 7; $grade++) {
+                                                                    if (isset($school['grades'][$grade])) {
+                                                                        $totalBoys += $school['grades'][$grade]['boys'];
+                                                                        $totalGirls += $school['grades'][$grade]['girls'];
+
+                                                                    }
+                                                                }
+
+                                                                $totalStudents = $totalBoys + $totalGirls;
 
 
+                                                                if ($totalGirls > 0) {
+                                                                    $girlsToilets = ceil($totalGirls / 25) - 1;
+                                                                }
 
+
+                                                                if ($totalBoys > 0) {
+                                                                    $boysToilets = ceil($totalBoys / 20);
+                                                                }
+                                                                if ($totalStudents > 0){
+                                                                    $deskRequired = ceil($totalStudents / 2 );
+                                                                }
+                                                                if ($totalBoys > 0 || $totalGirls > 0) {
+                                                                    $closets = 1;
+                                                                }
+                                                                if($totalStudents > 0){
+                                                                    $classesNeeded = ceil($totalStudents / 45) - 1;
+                                                                }
+
+                                                                echo "<tr>";
+                                                                echo "<td>" . $schoolIndex . "</td>";
+                                                                echo "<td>" . htmlspecialchars($school['school_name']) . "</td>";
+                                                                echo "<td>" . htmlspecialchars($totalBoys) . "</td>";
+                                                                echo "<td>" . htmlspecialchars($totalGirls) . "</td>";
+                                                                echo "<td>" . htmlspecialchars($totalStudents) . "</td>";
+                                                                echo "<td>" . htmlspecialchars($girlsToilets) . "</td>";
+                                                                echo "<td>" . htmlspecialchars($boysToilets) . "</td>";
+                                                                echo "<td>". htmlspecialchars($deskRequired). "</td>";
+                                                                echo "<td>". htmlspecialchars($closets). "</td>";
+                                                                echo "<td>". htmlspecialchars($classesNeeded). "</td>";
+
+                                                                echo "</tr>";
+
+                                                                $schoolIndex++;
+                                                            }
+                                                        } else {
+                                                            echo "<tr><td colspan='10'>No data available</td></tr>";
+                                                        }
+                                                        ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                                            <div class="create__course__bottom__button">
-                                                <a href="#">Download</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-8 col-lg-8 col-md-6 col-12">
-                                            <div class="create__course__bottom__button">
-                                                <a href="#" >Edit</a>
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                                    <div class="create__course__bottom__button">
+                                        <button class="btn btn-success"  onclick="exportTableToExcel('ReportTable', 'School_Overview_Report')"><strong>Export to Excel</strong></button>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-6 col-12">
+                                    <div class="create__course__bottom__button">
+                                        <a href="#">Edit</a>
                                     </div>
                                 </div>
                             </div>
@@ -286,8 +270,19 @@ if (!empty($schoolsData)) {
                     </div>
                 </div>
             </div>
-        </main>
-        <!-- footer  -->
+        </div>
+    </div>
+</main>
+
+<script>
+    function exportTableToExcel(tableID, filename = '') {
+        var tableSelect = document.getElementById(tableID);
+        var workbook = XLSX.utils.table_to_book(tableSelect, { sheet: "Sheet1" });
+        filename = filename ? filename + '.xlsx' : 'excel_data.xlsx';
+        XLSX.writeFile(workbook, filename);
+    }
+</script>
+        <!-- footer  starts  -->
 
         <?php require_once '../include/footer.php' ?>
         <!-- JS here -->

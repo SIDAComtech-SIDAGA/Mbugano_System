@@ -92,10 +92,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <link rel="stylesheet" href="../css/slick.css">
         <link rel="stylesheet" href="../css/swiper-bundle.min.css">
         <link rel="stylesheet" href="../css/style.css">
-
-
-
-    
+        <!-- exporting excel  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>    
     </head>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -119,191 +117,185 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
             </div>
         </div>
         <!-- pre loader area end -->
-
-
         <main class="main_wrapper overflow-hidden">
-            <?php require_once("../include/top_bar.php"); ?>
-            
-        
+    <?php require_once("../include/top_bar.php"); ?>
+    <? include("../include/header.php"); ?>
 
+    <!-- breadcrumbarea__section__start -->
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Requirements</li>
+        </ol>
+    </nav>
+    <!-- end  -->
+    <?php require_once '../include/report_navigator.php'?>
 
-            <? include("../include/header.php"); ?>
-            <!-- breadcrumbarea__section__start -->
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Requirements</li>
-                </ol>
-            </nav>
-            <!-- end  -->
-            <?php require_once '../include/report_navigator.php'?>
-
-            <!-- instructor__start -->
-            <div class="add-data">
-                <div class="create__course sp_100">
-                    <div class="container">
-                        <div class="row">
-
-                            <div class="col-md-12">
-                                <div class="create__course__accordion__wraper">
-                                    <div class="accordion" id="accordionExample">
-
-
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header" id="headingOne">
-                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                    School Overview Report
-                                                </button>
-                                                <?php if (isset($_GET['success'])) { ?>
-                                                    <div class="alert alert-success" id="successMessage" role="alert">
-                                                        <?= htmlspecialchars($_GET['success']) ?>
-                                                    </div>
-                                                <?php } ?>
-                                            </h2>
-                                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                                <form action="#">
-                                                    <div class="cartarea__table__content table-responsive">
-
-                                                        <div class="table-responsive">
-                                                        <table class="table table-bordered bg-primary">
-    <thead>
-        <tr>
-            <th rowspan="3">No</th>
-            <th rowspan="3">JINA LA SHULE</th>
-            <th colspan="3">AWALI</th>
-            <th colspan="3">DRS LA I</th>
-            <th colspan="3">DRS LA II</th>
-            <th colspan="3">DRS LA III</th>
-            <th colspan="3">DRS LA IV</th>
-            <th colspan="3">DRS LA V</th>
-            <th colspan="3">DRS LA VI</th>
-            <th colspan="3">DRS LA VII</th>
-            <th colspan="3">JUMLA KUU</th>
-        </tr>
-        <tr>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-            <th colspan="3">MADARASA</th>
-        </tr>
-        <tr>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-            <th>WV</th>
-            <th>WS</th>
-            <th>JML</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        if (!empty($schoolsData)) {
-            $schoolIndex = 1;
-            foreach ($schoolsData as $school) {
-                // Calculate the totals for JUMLA KUU
-                $totalBoys = 0;
-                $totalGirls = 0;
-                $totalStudents = 0;
-
-                for ($grade = 0; $grade <= 7; $grade++) {
-                    if (isset($school['grades'][$grade])) {
-                        $totalBoys += $school['grades'][$grade]['boys'];
-                        $totalGirls += $school['grades'][$grade]['girls'];
-                        $totalStudents += $school['grades'][$grade]['students_enrolled'];
-                    }
-                }
-
-                echo "<tr>";
-                echo "<td>" . $schoolIndex . "</td>";
-                echo "<td>" . htmlspecialchars($school['school_name']) . "</td>";
-                
-                // Display grades from AWALI (0) to DRS LA VII (7)
-                for ($grade = 0; $grade <= 7; $grade++) {
-                    if (isset($school['grades'][$grade])) {
-                        $boys = $school['grades'][$grade]['boys'];
-                        $girls = $school['grades'][$grade]['girls'];
-                        $total = $school['grades'][$grade]['students_enrolled'];
-                    } else {
-                        $boys = $girls = $total = 0;
-                    }
-                    echo "<td>" . htmlspecialchars($boys) . "</td>";
-                    echo "<td>" . htmlspecialchars($girls) . "</td>";
-                    echo "<td>" . htmlspecialchars($total) . "</td>";
-                }
-
-                // Display totals for JUMLA KUU
-                echo "<td>" . htmlspecialchars($totalBoys) . "</td>";
-                echo "<td>" . htmlspecialchars($totalGirls) . "</td>";
-                echo "<td>" . htmlspecialchars($totalStudents) . "</td>";
-                echo "</tr>";
-
-                $schoolIndex++;
-            }
-        } else {
-            echo "<tr><td colspan='29'>No data available</td></tr>";
-        }
-        ?>
-    </tbody>
-</table>
-
-                                                        </div>
-                                                    </div>
-                                                </form>
+    <!-- instructor__start -->
+    <div class="add-data">
+        <div class="create__course sp_100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="create__course__accordion__wraper">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            School Overview Report
+                                        </button>
+                                        <?php if (isset($_GET['success'])) { ?>
+                                            <div class="alert alert-success" id="successMessage" role="alert">
+                                                <?= htmlspecialchars($_GET['success']) ?>
                                             </div>
-                                        </div>
+                                        <?php } ?>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <form action="#">
+                                            <div class="cartarea__table__content table-responsive">
+                                                <div class="table-responsive">
+                                                    <table id="ReportTable" class="table table-bordered bg-primary">
+                                                        <thead>
+                                                            <tr>
+                                                                <th rowspan="3">No</th>
+                                                                <th rowspan="3">JINA LA SHULE</th>
+                                                                <th colspan="3">AWALI</th>
+                                                                <th colspan="3">DRS LA I</th>
+                                                                <th colspan="3">DRS LA II</th>
+                                                                <th colspan="3">DRS LA III</th>
+                                                                <th colspan="3">DRS LA IV</th>
+                                                                <th colspan="3">DRS LA V</th>
+                                                                <th colspan="3">DRS LA VI</th>
+                                                                <th colspan="3">DRS LA VII</th>
+                                                                <th colspan="3">JUMLA KUU</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th colspan="3">MADARASA</th>
+                                                                <th colspan="3">MADARASA</th>
+                                                                <th colspan="3">MADARASA</th>
+                                                                <th colspan="3">MADARASA</th>
+                                                                <th colspan="3">MADARASA</th>
+                                                                <th colspan="3">MADARASA</th>
+                                                                <th colspan="3">MADARASA</th>
+                                                                <th colspan="3">MADARASA</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>WV</th>
+                                                                <th>WS</th>
+                                                                <th>JML</th>
+                                                                <th>WV</th>
+                                                                <th>WS</th>
+                                                                <th>JML</th>
+                                                                <th>WV</th>
+                                                                <th>WS</th>
+                                                                <th>JML</th>
+                                                                <th>WV</th>
+                                                                <th>WS</th>
+                                                                <th>JML</th>
+                                                                <th>WV</th>
+                                                                <th>WS</th>
+                                                                <th>JML</th>
+                                                                <th>WV</th>
+                                                                <th>WS</th>
+                                                                <th>JML</th>
+                                                                <th>WV</th>
+                                                                <th>WS</th>
+                                                                <th>JML</th>
+                                                                <th>WV</th>
+                                                                <th>WS</th>
+                                                                <th>JML</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            if (!empty($schoolsData)) {
+                                                                $schoolIndex = 1;
+                                                                foreach ($schoolsData as $school) {
+                                                                    // Calculate the totals for JUMLA KUU
+                                                                    $totalBoys = 0;
+                                                                    $totalGirls = 0;
+                                                                    $totalStudents = 0;
 
+                                                                    for ($grade = 0; $grade <= 7; $grade++) {
+                                                                        if (isset($school['grades'][$grade])) {
+                                                                            $totalBoys += $school['grades'][$grade]['boys'];
+                                                                            $totalGirls += $school['grades'][$grade]['girls'];
+                                                                            $totalStudents += $school['grades'][$grade]['students_enrolled'];
+                                                                        }
+                                                                    }
 
+                                                                    echo "<tr>";
+                                                                    echo "<td>" . $schoolIndex . "</td>";
+                                                                    echo "<td>" . htmlspecialchars($school['school_name']) . "</td>";
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-12">
-                                            <div class="create__course__bottom__button">
-                                                <a href="#">Preview</a>
+                                                                    // Display grades from AWALI (0) to DRS LA VII (7)
+                                                                    for ($grade = 0; $grade <= 7; $grade++) {
+                                                                        if (isset($school['grades'][$grade])) {
+                                                                            $boys = $school['grades'][$grade]['boys'];
+                                                                            $girls = $school['grades'][$grade]['girls'];
+                                                                            $total = $school['grades'][$grade]['students_enrolled'];
+                                                                        } else {
+                                                                            $boys = $girls = $total = 0;
+                                                                        }
+                                                                        echo "<td>" . htmlspecialchars($boys) . "</td>";
+                                                                        echo "<td>" . htmlspecialchars($girls) . "</td>";
+                                                                        echo "<td>" . htmlspecialchars($total) . "</td>";
+                                                                    }
+
+                                                                    // Display totals for JUMLA KUU
+                                                                    echo "<td>" . htmlspecialchars($totalBoys) . "</td>";
+                                                                    echo "<td>" . htmlspecialchars($totalGirls) . "</td>";
+                                                                    echo "<td>" . htmlspecialchars($totalStudents) . "</td>";
+                                                                    echo "</tr>";
+
+                                                                    $schoolIndex++;
+                                                                }
+                                                            } else {
+                                                                echo "<tr><td colspan='29'>No data available</td></tr>";
+                                                            }
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-8 col-lg-8 col-md-6 col-12">
-                                            <div class="create__course__bottom__button">
-                                                <a href="#">Create Course</a>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
-
-
-
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                                    <div class="create__course__bottom__button">
+                                    <div class="btn btn-success">
+    <button class="btn btn-success" onclick="exportTableToExcel('ReportTable', 'School_Overview_Report')">Export to Excel</button>
+</div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8 col-lg-8 col-md-6 col-12">
+                                    <div class="create__course__bottom__button">
+                                        <a href="#">Create Course</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-            
-        </main>
+        </div>
+    </div>
+</main>
+
+<script>
+    function exportTableToExcel(tableID, filename = '') {
+        var tableSelect = document.getElementById(tableID);
+        var workbook = XLSX.utils.table_to_book(tableSelect, { sheet: "Sheet1" });
+        filename = filename ? filename + '.xlsx' : 'excel_data.xlsx';
+        XLSX.writeFile(workbook, filename);
+    }
+</script>
+
+
+
+</body>
 
        
         <?php require_once '../include/footer.php' ?>

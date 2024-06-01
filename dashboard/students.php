@@ -65,10 +65,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_email'])) {
         <link rel="stylesheet" href="../css/slick.css">
         <link rel="stylesheet" href="../css/swiper-bundle.min.css">
         <link rel="stylesheet" href="../css/style.css">
-
-
-
-
+        <!-- exporting excel  -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script> -->
     </head>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
