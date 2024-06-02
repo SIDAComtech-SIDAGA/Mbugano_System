@@ -1,5 +1,5 @@
 <?php
-// Include the database configuration file
+// Include 
 require_once "../db_conn.php";
 
 // require_once "../auth.php";
@@ -13,10 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headMasterPhone = $_POST['head_master_phone'];
     $aboutSchool = isset($_POST['about_school']) ? $_POST['about_school'] : '';
 
-    // Validate and sanitize the data (you may add more validation)
-    // For simplicity, let's assume all fields are required except About School
-
-    // Example of validation (you may extend it as per your requirements)
+    // Validate and sanitize)
+   
     $errors = [];
     if (empty($schoolName)) {
         $errors[] = "School Name is required";
@@ -55,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Error: " . $e->getMessage();
         }
     } else {
-        // If there are errors, display them
+        //  errors, display them
         foreach ($errors as $error) {
             echo "<p>Error: $error</p>";
         }
